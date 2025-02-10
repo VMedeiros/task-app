@@ -1,0 +1,101 @@
+<table *ngIf="gridData?.length > 0">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of gridData">
+    <tr>
+      <td>{{ item.title }}</td>
+      <td
+        [ngClass]="{
+          'is-incomplete': item.completed === false,
+          'is-complete': item.completed === true
+        }"
+      >
+        {{ getStatus(item.completed) }} -
+        <input
+          type="checkbox"
+          (click)="editItem(item)"
+          [checked]="item.completed"
+        />
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-toggle="modal"
+          data-target="#deleteModal"
+          (click)="confirmationDelete(item)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table *ngIf="gridData?.length === 0">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>No records...</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModal"
+  aria-hidden="true"
+  *ngIf="isDeleteModalOpen"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete item</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ confirmationDeleteMessage }}
+        <br />
+        <b>{{ selectedItem.title | titlecase }}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-confirm"
+          data-dismiss="modal"
+          (click)="deleteItem(selectedItem.id)"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{{ gridLoad() }}
+<app-grid-filter (filter)="filterList($event)"></app-grid-filter>

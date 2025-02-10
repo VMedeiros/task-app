@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-group {
+  display: block;
+  margin-right: 1%;
+}
+
+.btn-filter {
+  height: fit-content;
+  background: #141d2c;
+  border: #141d2c;
+  color: whitesmoke;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.btn-reset {
+  height: fit-content;
+  background: #dc3545;
+  border: #dc3545;
+  color: whitesmoke;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+  margin-left: 1%;
+}

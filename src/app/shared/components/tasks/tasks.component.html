@@ -1,0 +1,29 @@
+<h2>Tasks</h2>
+<app-add
+  [isAdd]="isAdd"
+  (isAdded)="alertAddSucess()"
+  (isAddedError)="alertAddError()"
+  (getList)="getTasks()"
+></app-add>
+
+<div
+  *ngIf="showAlert?.show"
+  class="alert"
+  [ngClass]="{
+    'alert-success': showAlert.type === 'success',
+    'alert-danger': showAlert.type === 'danger',
+    'alert-warning': showAlert.type === 'warning'
+  }"
+  role="alert"
+>
+  {{ showAlert.message }}
+</div>
+<app-grid
+  [gridData]="gridData"
+  (isUpdated)="alertEditSucess()"
+  (isUpdatedWarn)="alertEditWarn()"
+  (isUpdatedError)="alertEditError()"
+  (isDeleted)="alertDeleteSucess()"
+  (isDeletedError)="alertDeleteError()"
+  (getList)="getTasks()"
+></app-grid>

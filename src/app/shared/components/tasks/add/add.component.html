@@ -1,0 +1,32 @@
+<form class="form" [formGroup]="form">
+  <div class="form-group">
+    <label for="task">Title name</label>
+    <input
+      class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          form.controls.title.invalid &&
+          (form.controls.title.dirty || form.controls.title.touched),
+        'is-valid':
+          form.controls.title.valid &&
+          (form.controls.title.dirty || form.controls.title.touched)
+      }"
+      type="text"
+      formControlName="title"
+      placeholder="Title name"
+    />
+    <div class="invalid-feedback">This field is required.</div>
+  </div>
+
+  <button
+    [disabled]="!form.valid || isAdd"
+    type="button"
+    class="btn btn-add"
+    [ngClass]="{
+      'is-invalid-btn': form.invalid && (form.dirty || form.touched)
+    }"
+    (click)="addItem()"
+  >
+    Add Tasks
+  </button>
+</form>

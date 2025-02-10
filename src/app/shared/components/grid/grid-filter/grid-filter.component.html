@@ -1,0 +1,31 @@
+<form class="form" [formGroup]="form">
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      formControlName="title"
+      placeholder="Title"
+    />
+  </div>
+
+  <div class="form-group">
+    <select class="form-control" formControlName="completed">
+      <option>All</option>
+      <option>Completed</option>
+      <option>Incompleted</option>
+    </select>
+  </div>
+
+  <button
+    [disabled]="disableFilter()"
+    type="button"
+    class="btn btn-filter"
+    (click)="filterList()"
+  >
+    Filter
+  </button>
+
+  <button type="button" class="btn btn-reset" (click)="resetFilter()">
+    Clear
+  </button>
+</form>

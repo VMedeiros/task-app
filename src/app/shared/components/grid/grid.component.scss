@@ -1,0 +1,47 @@
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+table,
+th,
+td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 1% 2%;
+}
+
+th {
+  text-align: justify;
+  color: whitesmoke;
+  background-color: #141d2c;
+  border-color: #32383e;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.is-complete {
+  background-color: #d4edda;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.is-incomplete {
+  background-color: #f8d7da;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.btn-confirm {
+  color: whitesmoke;
+  background-color: #141d2c;
+  border-color: #141d2c;
+}
